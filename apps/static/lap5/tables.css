@@ -1,0 +1,33 @@
+
+
+table {
+border-collapse: collapse; 
+margin-bottom: 40px;      
+font-size: 1rem;
+}
+
+
+
+th, td {
+border: 1px solid gray; 
+padding: 8px;           
+text-align: left;       
+}
+
+.centered-header {
+text-align: center;
+vertical-align: middle;
+}
+
+
+td img {
+max-width: 150px;
+}
+
+.table{
+margin: auto;
+}
+
+.table-1{
+    margin-bottom: 5%;
+}

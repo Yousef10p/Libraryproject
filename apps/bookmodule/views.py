@@ -40,4 +40,18 @@ def aboutus(request):
     return render(request, 'bookmodule/aboutus.html')
 
 
+## ------------------------ LAB 5 ----------------------------
+def links(request):
+    return render(request,"bookmodule/lap5/links.html")
+
+
+def text_formatting(request):
+    return render(request,"bookmodule/lap5/text_formatting.html")
+
+def listing(request):
+    return render(request,"bookmodule/lap5/listing.html")
+
+def tables(request):
+    return render(request,"bookmodule/lap5/tables.html")
+    
 

@@ -1,0 +1,43 @@
+
+
+.section {
+    padding: 40px 15px; 
+    text-align: center;   
+}
+
+.section a {
+    font-size: 18px; 
+    font-weight: bold;
+}
+
+
+/* now to specific section not general */
+
+
+.section-one {
+    background-color: green; 
+}
+
+.section-one a {
+    color: red;
+    text-decoration: underline; 
+}
+
+
+.section-two {
+    background-color: gray; 
+}
+
+.section-two a {
+    color: yellow;
+    text-decoration: underline;
+}
+
+.section-three {
+    background-color: black; 
+}
+
+.section-three a {
+    color: white;
+    text-decoration: underline;
+}
