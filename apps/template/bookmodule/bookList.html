@@ -1,0 +1,30 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+
+{% block title%}
+    Resulting Books
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+
+{% block content %}
+    {% if books %}
+    <h1>Books are</h1>
+    <ol>
+        {% for book in books %}
+         <li>
+            <ul>
+                <li><p><strong>ISBNB: </strong>{{book.id}}</p></li>
+                <li><p><strong>Title: </strong>{{book.title}}</p></li>
+                <li><p><strong>Author: </strong>{{book.author}}</p></li>
+            </ul>
+         </li>   
+        {% endfor %}
+    </ol>
+    {% else %}
+    <h1>Book Not Found</h1>
+    {% endif %}
+{% endblock %}
