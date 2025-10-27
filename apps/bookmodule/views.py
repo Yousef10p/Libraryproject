@@ -83,3 +83,18 @@ def __getBooksList():
     return [book1, book2, book3]
 
 
+
+
+## ------------------------ LAB 7 ----------------------------
+from .models import Book
+def simple_query(request):
+    books = Book.objects.all()
+    return render(request,'bookmodule/bookList.html', {'books':books})
+    
+def complex_query(request):
+    books = Book.objects.filter(author__isnull=False).filter(title__icontains='and').filter(edition__gte=2).filter(price__lte=1000)[:10]
+    
+    if len(books) >= 1:
+        return render(request, 'bookmodule/bookList.html',{'books':books})
+    
+    return render(request, 'bookmodule/bookList.html')

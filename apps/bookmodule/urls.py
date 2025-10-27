@@ -22,5 +22,9 @@ urlpatterns = [
             path('html5/tables',views.tables,name='books.tables'),
             
             # ---------------- LAB 6 -------------------
-            path('search',views.search, name='books.search')
+            path('search',views.search, name='books.search'),
+            
+            #---------------- LAB 7 -------------------
+            path('simple/query', views.simple_query, name='books.simple_query'),
+            path('complex/query', views.complex_query, name='books.complex_query'),
 ]       
