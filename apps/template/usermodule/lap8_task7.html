@@ -1,0 +1,14 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %} Students Info {% endblock title %}
+{% block content %}
+
+<h1>Students Info</h1>
+<ul>
+    {% for row in students_city_count %}
+        <p>{{ row.address__city }}: {{ row.student_count }}</p>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}

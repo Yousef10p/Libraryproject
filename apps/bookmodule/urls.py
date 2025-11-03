@@ -27,4 +27,11 @@ urlpatterns = [
             #---------------- LAB 7 -------------------
             path('simple/query', views.simple_query, name='books.simple_query'),
             path('complex/query', views.complex_query, name='books.complex_query'),
+            
+            #---------------- LAB 8 -------------------
+            path('lap8/task1', views.lap8_task1, name='books.lap8_task1'),
+            path('lap8/task2', views.lap8_task2, name='books.lap8_task2'),
+            path('lap8/task3', views.lap8_task3, name='books.lap8_task3'),
+            path('lap8/task4', views.lap8_task4, name='books.lap8_task4'),
+            path('lap8/task5', views.lap8_task5, name='books.lap8_task5'),
 ]       

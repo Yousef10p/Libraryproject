@@ -1,0 +1,15 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %} List of Books Info {% endblock title %}
+{% block content %}
+
+<h1>Books Info</h1>
+<ul>
+    <p><strong>Number Of Books:</strong>{{books_count}}</p>
+    <p><strong>Total Price Of Books:</strong>{{books_total_price}}</p>
+    <p><strong>Average Price Of Books:</strong>{{books_average_price}}</p>
+    <p><strong>Maximum Price Of Books:</strong>{{books_max_price}}</p>
+    <p><strong>Minimum Price Of Books:</strong>{{books_min_price}}</p>
+</ul>
+
+{% endblock %}

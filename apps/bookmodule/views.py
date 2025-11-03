@@ -98,3 +98,48 @@ def complex_query(request):
         return render(request, 'bookmodule/bookList.html',{'books':books})
     
     return render(request, 'bookmodule/bookList.html')
+
+
+
+#---------------- LAB 8 -------------------
+from .models import Book
+from django.db.models import Q
+def lap8_task1(request):
+    query = Book.objects.filter(Q(price__lte=80))
+    return render(request,'bookmodule/lap8_task1_task2_task3_task4.html', {"books":query})
+
+def lap8_task2(request):
+    query = Book.objects.filter(Q(edition__gt=3) & (Q(title__icontains='qu') | Q(author__icontains='qu')))
+    return render(request,'bookmodule/lap8_task1_task2_task3_task4.html', {"books":query})
+
+
+def lap8_task3(request):
+    query = Book.objects.filter(~Q(edition__gt=3) & (~Q(title__icontains='qu') | ~Q(author__icontains='qu')))
+    return render(request,'bookmodule/lap8_task1_task2_task3_task4.html', {"books":query})
+
+
+def lap8_task4(request):
+    query = Book.objects.order_by('title')
+    return render(request,'bookmodule/lap8_task1_task2_task3_task4.html', {"books":query})
+
+
+
+from django.db.models import Count, Sum, Avg, Min, Max
+def lap8_task5(request):
+    query = Book.objects.aggregate(
+        count=Count('id'),
+        total=Sum('price'),
+        avg=Avg('price'),
+        min=Min('price'),
+        max=Max('price')
+    )
+    
+    context = {
+        "books_count": query['count'],
+        "books_total_price": query['total'],
+        "books_average_price": query['avg'],
+        "books_min_price": query['min'],
+        "books_max_price": query['max'],
+    }
+
+    return render(request, 'bookmodule/lap8_task5.html', context)
