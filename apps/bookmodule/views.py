@@ -68,7 +68,7 @@ def search(request):
             contained = False
             if isTitle and string in book['title'].lower():
                 contained = True
-            if not contained and isAuthor and string in book['author'].lower:
+            if not contained and isAuthor and string in book['author'].lower():
                 contained=True
             
             if contained:
