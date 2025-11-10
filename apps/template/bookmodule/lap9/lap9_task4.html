@@ -1,0 +1,22 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %}Book Prices for every publisher{% endblock title %}
+{% block content %}
+<h1>Average, Min, and Max Price for every Publisher</h1>
+<table border="1">
+    <tr>
+        <th>Publisher</th>
+        <th>Average Price</th>
+        <th>Minimum Price</th>
+        <th>Maximum Price</th>
+    </tr>
+    {% for publisher in publishers %}
+    <tr>
+        <td>{{ publisher.name }}</td>
+        <td>{{ publisher.avg_price }}</td>
+        <td>{{ publisher.min_price }}</td>
+        <td>{{ publisher.max_price }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

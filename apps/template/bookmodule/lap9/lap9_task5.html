@@ -1,0 +1,20 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %}----{% endblock title %}
+{% block content %}
+<h1>High rating books count for every publisher</h1>
+<table border="1">
+    <tr>
+        <th>Publisher</th>
+        <th>Total Books</th>
+        <th>hight Rated books count (Rating >= 4)</th>
+    </tr>
+    {% for publisher in publishers %}
+    <tr>
+        <td>{{ publisher.name }}</td>
+        <td>{{ publisher.num_books }}</td>
+        <td>{{ publisher.highly_rated_books }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

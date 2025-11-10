@@ -143,3 +143,51 @@ def lap8_task5(request):
     }
 
     return render(request, 'bookmodule/lap8_task5.html', context)
+
+
+
+
+# --------------------------------------- lap9 ------------------------------------------
+from .models import Book,Publisher,Author
+
+def lap9_task1(request):
+    books = Book.objects.all()
+    total_quantity = sum(b.quantity for b in books)
+    total_quantity = total_quantity if total_quantity != 0  else 1
+
+    for b in books:
+        b.availability_percentage = round((b.quantity / total_quantity) * 100, 2)
+
+    return render(request, 'bookmodule/lap9/lap9_task1.html', {'books': books})
+
+def lap9_task2(request):
+    publishers = Publisher.objects.annotate(total_stock=Sum('book__quantity'))
+    return render(request, 'bookmodule/lap9/lap9_task2.html', {'publishers': publishers})
+
+
+def lap9_task3(request):
+    publishers = Publisher.objects.annotate(oldest_pubdate=Min('book__pubdate'))
+    return render(request, 'bookmodule/lap9/lap9_task3.html', {'publishers': publishers})
+
+
+def lap9_task4(request):
+    publishers = Publisher.objects.annotate(
+        avg_price=Avg('book__price'),
+        min_price=Min('book__price'),
+        max_price=Max('book__price')
+    )
+    return render(request, 'bookmodule/lap9/lap9_task4.html', {'publishers': publishers})
+
+
+def lap9_task5(request):
+    highly_rated = Count("book", filter=Q(book__rating__gte = 4))
+    Publishers = Publisher.objects.annotate(num_books = Count("book"),
+    highly_rated_books = highly_rated)
+    return render(request, 'bookmodule/lap9/lap9_task5.html', {'publishers':     Publishers})
+
+
+def lap9_task6(request):
+    publishers = Publisher.objects.annotate(
+        filtered_books_count=Count('book', filter=Q(book__price__gt=50, book__quantity__lt=5, book__quantity__gte=1))
+    )
+    return render(request, 'bookmodule/lap9/lap9_task6.html', {'publishers': publishers})

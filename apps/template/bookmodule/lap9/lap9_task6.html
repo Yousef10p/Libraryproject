@@ -1,0 +1,21 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %}عد مشروط{% endblock title %}
+{% block content %}
+<h1>عد مشروط</h1>
+<p>Books with Price > 50 and Quantity between 1 and 4</p>
+<table border="1">
+    <tr>
+        <th>Publisher</th>
+        <th>Location</th>
+        <th>conditioned count</th>
+    </tr>
+    {% for publisher in publishers %}
+    <tr>
+        <td>{{ publisher.name }}</td>
+        <td>{{ publisher.location }}</td>
+        <td>{{ publisher.filtered_books_count }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

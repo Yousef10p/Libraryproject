@@ -1,0 +1,20 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %}Oldest Book per Publisher{% endblock title %}
+{% block content %}
+<h1>Oldest Book of Each Publisher</h1>
+<table border="1">
+    <tr>
+        <th>Publisher</th>
+        <th>Location</th>
+        <th>oldest book</th>
+    </tr>
+    {% for publisher in publishers %}
+    <tr>
+        <td>{{ publisher.name }}</td>
+        <td>{{ publisher.location }}</td>
+        <td>{{ publisher.oldest_pubdate}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock content %}
