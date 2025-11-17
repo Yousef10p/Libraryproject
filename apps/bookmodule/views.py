@@ -191,3 +191,109 @@ def lap9_task6(request):
         filtered_books_count=Count('book', filter=Q(book__price__gt=50, book__quantity__lt=5, book__quantity__gte=1))
     )
     return render(request, 'bookmodule/lap9/lap9_task6.html', {'publishers': publishers})
+
+
+
+#---------------- LAB 10 --------------------------------------
+def lap10_task1(request):
+    
+    books=Book.objects.all()
+    return render(request,'bookmodule/lap10/task1.html', {'books': books})
+
+def lap10_task2(request):
+    if request.method == 'GET':
+        publishers = Publisher.objects.all()
+        auhtors=Author.objects.all()
+        return render(request,'bookmodule/lap10/task2.html', {"publishers": publishers, 'authors': auhtors})
+    
+    
+    title=request.POST.get('title')
+    price=request.POST.get('price')
+    quantity=request.POST.get('quantity')
+    rating = request.POST.get('rating')
+    pubdate=request.POST.get('pubdate')
+    publisher=request.POST.get('publisher')
+    publisher=Publisher.objects.get(id=publisher)
+    auhtors=request.POST.getlist('authors')
+    book = Book(title=title,price=price,quantity=quantity, rating=rating, pubdate=pubdate,publisher=publisher)
+    book.save()
+    book.authors.set(auhtors)
+    
+    return redirect('books.lap10_task1')
+    
+def lap10_task3(request,id):
+    if request.method == 'GET':
+        book = Book.objects.get(id=id)
+        publishers = Publisher.objects.all()
+        authors=Author.objects.all()
+        return render(request,'bookmodule/lap10/task3.html', {'book': book,'publishers': publishers,'authors':authors})
+    else:
+        title=request.POST.get('title')
+        price=request.POST.get('price')
+        quantity=request.POST.get('quantity')
+        pubdate=request.POST.get('pubdate')
+        rating=request.POST.get('rating')
+        
+        publisher=request.POST.get('publisher')
+        publisher=Publisher.objects.get(id=publisher)
+        authors=request.POST.getlist('authors')
+        
+         
+        book = Book.objects.get(id=id)
+        book.title=title
+        book.price=price
+        book.quantity=quantity
+        book.pubdate=pubdate
+        book.rating=rating
+        book.publisher = publisher
+        book.authors.set(authors)
+        book.save()
+    
+    return redirect('books.lap10_task1')
+
+def lap10_task4(request,id):
+    book = Book.objects.get(id=id)
+    book.delete()
+    return redirect('books.lap10_task1')
+
+#---------------------------- part 2  lap10 ----------------------------
+
+from .forms import BookForm
+
+def lap10_2_task1(request):
+    books=Book.objects.all()
+    return render(request,'bookmodule/lap10_2/task1.html', {'books': books})
+
+def lap10_2_task2(request):
+    if request.method == 'POST':
+        form = BookForm(request.POST)
+        if form.is_valid():
+            form.save() 
+            return redirect('books.lap10_2_task1')
+    else:
+        form = BookForm()
+
+    return render(request, 'bookmodule/lap10_2/task2_3.html', {'form': form})
+
+
+def lap10_2_task3(request, id):
+    book = Book.objects.get(id=id)
+
+    if request.method == 'POST':
+        form = BookForm(request.POST, instance=book)
+        if form.is_valid():
+            form.save()  
+            return redirect('books.lap10_2_task1')
+    else:
+        form = BookForm(instance=book)  
+
+    return render(request, 'bookmodule/lap10_2/task2_3.html', {'form': form})
+
+
+def lap10_2_task4(request, id):
+    book = Book.objects.get(id=id)
+    book.delete()
+    return redirect('books.lap10_2_task1')
+
+
+

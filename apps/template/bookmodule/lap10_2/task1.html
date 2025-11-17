@@ -1,0 +1,18 @@
+{% extends "../../layouts/base.html" %}
+{% load static %}
+{% block title %} List of Books {% endblock title %}
+{% block content %}
+
+<h1>All books</h1>
+<h3><a href="{% url "books.lap10_2_task2" %}">add book</a></h3>
+<ul>
+    {% for book in books %}
+        <li>
+            <p>{{book.title}}</p>
+            <a href="{% url "books.lap10_2_task3" book.id %}">Edit</a>
+            <a href="{% url "books.lap10_2_task4" book.id %}">Remove</a>
+        </li>
+        <hr>
+    {% endfor %}
+</ul>
+{% endblock content %}

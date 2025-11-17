@@ -43,4 +43,15 @@ urlpatterns = [
             path('lap9/task5', views.lap9_task5, name='books.lap9_task5'),
             path('lap9/task6', views.lap9_task6, name='books.lap9_task6'),
             
-]       
+            
+            #---------------- LAB 10 -------------------
+            path('lap10/task1',views.lap10_task1, name='books.lap10_task1'),
+            path('lap10/task2',views.lap10_task2, name='books.lap10_task2'),
+            path('lap10/task3/<int:id>',views.lap10_task3, name='books.lap10_task3'),
+            path('lap10/task4/<int:id>',views.lap10_task4, name='books.lap10_task4'), 
+            #---------------- LAB 10 part 2 -------------------
+            path('lap10_2/task1',views.lap10_2_task1, name='books.lap10_2_task1'),
+            path('lap10_2/task2',views.lap10_2_task2, name='books.lap10_2_task2'),
+            path('lap10_2/task3/<int:id>',views.lap10_2_task3, name='books.lap10_2_task3'),
+            path('lap10_2/task4/<int:id>',views.lap10_2_task4, name='books.lap10_2_task4'), 
+]           

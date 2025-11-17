@@ -1,0 +1,55 @@
+{% extends "../../layouts/base.html" %}
+{% load static %}
+{% block title %} List of Books {% endblock title %}
+{% block content %}
+
+<h1>add book</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" value="">
+    <br>
+
+    <label for="price">Price</label>
+    <input type="text" name="price" id="price" value="">
+    <br>
+
+    <label for="quantity">Quantity</label>
+    <input type="text" name="quantity" id="quantity" value="">
+    <br>
+
+     <label for="pubdate">Publication Date</label>
+     <input type="text" name="pubdate" id="pubdate">
+    <br> 
+
+    <label for="rating">Rating</label>
+    <input type="text" name="rating" id="rating" value="">
+    <br>
+
+    <label for="publisher">Publisher</label>
+    <select name="publisher" id="publisher">
+    {% for publisher in publishers %}
+        <option value="{{publisher.id}}">
+            {{ publisher.name }}
+        </option>
+    {% endfor %}
+    </select>
+
+    <br>
+
+    <label for="authors">Authors</label>
+    <select name="authors" id="authors" multiple>
+    {% for author in authors %}
+        <option value="{{ author.id }}">
+            {{ author.name }}
+        </option>
+    {% endfor %}
+    </select>
+    <br>
+
+    <button type="submit">Submit</button>
+    <a href="{% url "books.lap10_task1" %}">Cancel</a>
+    <br>
+</form>
+
+{% endblock content %}
