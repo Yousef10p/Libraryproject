@@ -1,0 +1,27 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %} Students Info {% endblock title %}
+{% block content %}
+
+
+<h1>Students Info</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Address</th>
+    </tr>
+    {% for student in students %}
+      <tr>
+        <td>{{student.name}}</td>
+        <td>{{student.age}}</td>
+        {% for addrs in student.address.all %}
+        <td>{{addrs}}</td>
+        {% endfor %}
+        <td><img src="{{ student.img.url }}" width=50 height=50></td>
+      </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}

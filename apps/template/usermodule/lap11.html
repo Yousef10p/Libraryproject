@@ -1,0 +1,13 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %} Students Info {% endblock title %}
+{% block content %}
+
+<h1>Students Info</h1>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ forms }}
+<button type="submit">Submit</button>
+</form>
+
+{% endblock %}
